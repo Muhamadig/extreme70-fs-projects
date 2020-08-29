@@ -1,6 +1,6 @@
 import React from "react";
 import "./common.css";
-const SearchBox = ({ name, id, placeholder, label }) => {
+const SearchBox = ({ name, id, placeholder, label, onChange }) => {
   //   let { name, id, placeholder, label } = props;
   return (
     <div>
@@ -13,6 +13,7 @@ const SearchBox = ({ name, id, placeholder, label }) => {
         id={id}
         placeholder={placeholder}
         className="searchBox"
+        onChange={(event) => onChange(event)}
       />
     </div>
   );
