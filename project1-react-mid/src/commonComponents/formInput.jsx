@@ -6,6 +6,8 @@ const FormInput = ({
   inputId,
   value,
   disabled = false,
+  onChange,
+  attribute,
 }) => {
   return (
     <div>
@@ -18,6 +20,7 @@ const FormInput = ({
         name={name}
         disabled={disabled}
         value={value}
+        onChange={(event) => onChange(event, attribute)}
       />
     </div>
   );

@@ -15,16 +15,37 @@ class Users extends Component {
   handleNewUser = () => {};
   handleSearchBox = (event) => {
     let searchText = event.target.value;
+    let usersToShow = this.filterUsers(searchText);
+    this.setState({ searchText, usersToShow });
+  };
+  filterUsers = (searchText) => {
     let usersToShow = this.state.users.filter(
       (user) =>
         user.name.toLowerCase().includes(searchText.toLowerCase()) ||
         user.email.toLowerCase().includes(searchText.toLowerCase())
     );
-    this.setState({ searchText, usersToShow });
+    return usersToShow;
   };
+  handleUpdateUser = (updatedUser) => {
+    let userIndex = this.state.users.findIndex(
+      (user) => user.id === updatedUser.id
+    );
+    let { users } = this.state;
+    users[userIndex] = updatedUser;
+    let usersToShow = this.filterUsers(this.state.searchText);
+    this.setState({ users, usersToShow });
+  };
+  handleDeleteUser = (userId) => {};
   render() {
     let usersList = this.state.usersToShow.map((user) => {
-      return <User key={user.id} data={user} />;
+      return (
+        <User
+          key={user.id}
+          data={user}
+          onUpdate={this.handleUpdateUser}
+          onDelete={this.handleDeleteUser}
+        />
+      );
     });
     return (
       <div>
