@@ -46,6 +46,20 @@ class User extends Component {
             Other Data
           </button>
           {this.state.showOtherData ? <UserAddress /> : null}
+          <div className="user-update-delete">
+            <button
+              className="button button-group"
+              id={`user-${user.id}-update`}
+            >
+              Update
+            </button>
+            <button
+              className="button button-group"
+              id={`user-${user.id}-delete`}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </UserProvider>
     );

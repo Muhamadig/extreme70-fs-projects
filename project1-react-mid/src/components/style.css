@@ -35,6 +35,7 @@
   padding: 10px 24px;
   margin-left: 12%;
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 .user-other-data-button:hover {
   background-color: gainsboro;
@@ -42,7 +43,14 @@
 }
 .user-other-data {
   background-color: gainsboro;
-  margin: 2rem 0rem;
+  margin: 1rem 0rem;
   border: solid 2px;
   border-radius: 30px;
+}
+.user-update-delete {
+  text-align: right;
+}
+.button-group {
+  display: inline-block;
+  margin: 0rem 0.5rem;
 }
