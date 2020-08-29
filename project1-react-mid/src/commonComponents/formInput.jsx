@@ -9,7 +9,9 @@ const FormInput = ({
 }) => {
   return (
     <div>
-      <label htmlFor={name}>{label}</label>
+      <label htmlFor={name} className="form-input-label">
+        {label}
+      </label>
       <input
         type={inputType}
         id={inputId}

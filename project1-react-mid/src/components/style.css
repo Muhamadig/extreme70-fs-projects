@@ -16,3 +16,33 @@
   border: none;
   cursor: pointer;
 }
+.user-info {
+  margin: 1rem;
+  padding: 1rem;
+  border: solid 1px;
+}
+
+.red-border {
+  border-color: red;
+}
+.green-border {
+  border-color: green;
+}
+
+.user-other-data-button {
+  background-color: grey;
+  font-size: small;
+  padding: 10px 24px;
+  margin-left: 12%;
+  margin-top: 1rem;
+}
+.user-other-data-button:hover {
+  background-color: gainsboro;
+  color: black;
+}
+.user-other-data {
+  background-color: gainsboro;
+  margin: 2rem 0rem;
+  border: solid 2px;
+  border-radius: 30px;
+}
