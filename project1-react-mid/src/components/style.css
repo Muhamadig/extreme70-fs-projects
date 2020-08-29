@@ -1,0 +1,18 @@
+.column {
+  width: 50%;
+}
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.button {
+  background-color: steelblue;
+  color: aliceblue;
+  font-size: medium;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}

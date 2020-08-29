@@ -1,0 +1,8 @@
+input[type="search"].searchBox {
+  padding: 0.5rem 1rem;
+  width: 80%;
+}
+.search-label {
+  padding: 0.5rem 1rem;
+  width: 20%;
+}
