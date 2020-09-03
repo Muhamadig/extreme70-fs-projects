@@ -8,7 +8,7 @@ class User extends Component {
     super(props);
     this.state = {
       user: props.data,
-      tasks: [],
+      tasks: {},
       allTasksCompleted: false,
       showOtherData: false,
     };
@@ -43,6 +43,20 @@ class User extends Component {
       this.state.allTasksCompleted ? "green-border" : "red-border"
     }`;
   };
+
+  deleteUserData=()=>{
+    let {user}={...this.state}
+    for (const attribute in user) {
+      if(attribute!=="id"){
+        user[attribute]="";
+      }
+    }
+    let tasks=[...this.state.tasks]
+    tasks=[];
+
+    this.setState({ user,tasks  });
+    this.props.onDelete(user);
+  }
   render() {
     let { user } = this.state;
     return (
@@ -66,7 +80,7 @@ class User extends Component {
           >
             Update
           </button>
-          <button className="button button-group" id={`user-${user.id}-delete`}>
+          <button className="button button-group" id={`user-${user.id}-delete`} onClick={this.deleteUserData}>
             Delete
           </button>
         </div>

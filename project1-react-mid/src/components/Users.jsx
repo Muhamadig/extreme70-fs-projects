@@ -34,8 +34,9 @@ class Users extends Component {
     users[userIndex] = updatedUser;
     let usersToShow = this.filterUsers(this.state.searchText);
     this.setState({ users, usersToShow });
+    console.log(this.state.users);
   };
-  handleDeleteUser = (userId) => {};
+
   render() {
     let usersList = this.state.usersToShow.map((user) => {
       return (
@@ -43,7 +44,7 @@ class Users extends Component {
           key={user.id}
           data={user}
           onUpdate={this.handleUpdateUser}
-          onDelete={this.handleDeleteUser}
+          onDelete={this.handleUpdateUser}
         />
       );
     });
