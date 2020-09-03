@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as TasksService from "../restService/tasksService";
-import UserAddress from "./UserAdress";
+import UserAddress from "./UserAddress";
 import UserBasicInfo from "./UserBasicInfo";
 
 class User extends Component {

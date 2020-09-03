@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FormInput from "./../commonComponents/formInput";
+import FormInput from "../commonComponents/formInput";
 import "./style.css";
 import { UserConsumer } from "./userContextApi";
 class UserAddress extends Component {
