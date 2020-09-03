@@ -1,0 +1,33 @@
+.App {
+  text-align: left;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 1rem;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.App-main-row {
+  margin: 1rem;
+  display: flex;
+}
+
+.app-main-column {
+  padding: 10px;
+  flex: 50%;
+}
+.app-border {
+  border: solid 1px steelblue;
+  border-radius: 20px;
+}

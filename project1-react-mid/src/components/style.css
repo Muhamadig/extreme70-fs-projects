@@ -1,0 +1,56 @@
+.column {
+  width: 50%;
+}
+.form-inline {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.button {
+  background-color: steelblue;
+  color: aliceblue;
+  font-size: medium;
+  padding: 10px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.user-info {
+  margin: 1rem;
+  padding: 1rem;
+  border: solid 1px;
+}
+
+.red-border {
+  border-color: red;
+}
+.green-border {
+  border-color: green;
+}
+
+.user-other-data-button {
+  background-color: grey;
+  font-size: small;
+  padding: 10px 24px;
+  margin-left: 12%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.user-other-data-button:hover {
+  background-color: gainsboro;
+  color: black;
+}
+.user-other-data {
+  background-color: gainsboro;
+  margin: 1rem 0rem;
+  border: solid 2px;
+  border-radius: 30px;
+}
+.user-update-delete {
+  text-align: right;
+}
+.button-group {
+  display: inline-block;
+  margin: 0rem 0.5rem;
+}
