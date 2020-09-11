@@ -34,7 +34,6 @@ class Users extends Component {
     users[userIndex] = updatedUser;
     let usersToShow = this.filterUsers(this.state.searchText);
     this.setState({ users, usersToShow });
-    console.log(this.state.users);
   };
 
   render() {

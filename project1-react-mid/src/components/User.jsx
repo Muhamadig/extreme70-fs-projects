@@ -8,7 +8,7 @@ class User extends Component {
     super(props);
     this.state = {
       user: props.data,
-      tasks: {},
+      tasks: [],
       allTasksCompleted: false,
       showOtherData: false,
     };
@@ -16,16 +16,12 @@ class User extends Component {
 
   async componentDidMount() {
     let tasks = await TasksService.getUsersTodos(this.props.data.id);
-    this.setState({ tasks }, () => {
-      this.isAllTasksCompleted();
-    });
+    let allTasksCompleted = this.isAllTasksCompleted(tasks);
+    this.setState({ tasks, allTasksCompleted });
   }
-  isAllTasksCompleted = () => {
-    let incompletedTasks = this.state.tasks.filter(
-      (task) => task.completed === false
-    );
-    let allTasksCompleted = incompletedTasks.length === 0;
-    this.setState({ allTasksCompleted });
+  isAllTasksCompleted = (tasks) => {
+    let incompletedTasks = tasks.filter((task) => task.completed === false);
+    return !incompletedTasks || incompletedTasks.length === 0;
   };
   handleMouseOver = (event) => {
     let showOtherData = !this.state.showOtherData;
@@ -44,19 +40,20 @@ class User extends Component {
     }`;
   };
 
-  deleteUserData=()=>{
-    let {user}={...this.state}
+  deleteUserData = () => {
+    let { user } = { ...this.state };
     for (const attribute in user) {
-      if(attribute!=="id"){
-        user[attribute]="";
+      if (attribute !== "id") {
+        user[attribute] = "";
       }
     }
-    let tasks=[...this.state.tasks]
-    tasks=[];
 
-    this.setState({ user,tasks  });
+    let tasks = [];
+    let allTasksCompleted = this.isAllTasksCompleted(tasks);
+    this.setState({ user, tasks, allTasksCompleted });
+
     this.props.onDelete(user);
-  }
+  };
   render() {
     let { user } = this.state;
     return (
@@ -80,7 +77,11 @@ class User extends Component {
           >
             Update
           </button>
-          <button className="button button-group" id={`user-${user.id}-delete`} onClick={this.deleteUserData}>
+          <button
+            className="button button-group"
+            id={`user-${user.id}-delete`}
+            onClick={this.deleteUserData}
+          >
             Delete
           </button>
         </div>

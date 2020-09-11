@@ -23,10 +23,10 @@
 }
 
 .red-border {
-  border-color: red;
+  border:solid 0.5rem red;
 }
 .green-border {
-  border-color: green;
+  border:solid 0.5rem green;
 }
 
 .user-other-data-button {
