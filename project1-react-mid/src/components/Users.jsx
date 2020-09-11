@@ -7,7 +7,7 @@ import RestService from "../restService/restService";
 class Users extends Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], usersToShow: [], searchText: "" };
+    this.state = { users: [], searchText: "" };
   }
   async componentDidMount() {
     let responseMessage = await UserService.loadAllUsers();
@@ -15,35 +15,38 @@ class Users extends Component {
       alert("Users data was not loaded successfully!!!");
     else {
       let users = UserService.getAllUsers();
-      this.setState({ users, usersToShow: users });
+      this.setState({ users });
     }
   }
   handleNewUser = () => {};
   handleSearchBox = (event) => {
     let searchText = event.target.value;
-    let usersToShow = this.filterUsers(searchText);
-    this.setState({ searchText, usersToShow });
+    this.setState({ searchText });
   };
   filterUsers = (searchText) => {
-    let usersToShow = this.state.users.filter(
+    let users = this.state.users.filter(
       (user) =>
         user.name.toLowerCase().includes(searchText.toLowerCase()) ||
         user.email.toLowerCase().includes(searchText.toLowerCase())
     );
-    return usersToShow;
+    return users;
   };
   handleUpdateUser = (updatedUser) => {
-    let userIndex = this.state.users.findIndex(
-      (user) => user.id === updatedUser.id
-    );
-    let { users } = this.state;
-    users[userIndex] = updatedUser;
-    let usersToShow = this.filterUsers(this.state.searchText);
-    this.setState({ users, usersToShow });
+    //   let userIndex = this.state.usersInDb.findIndex(
+    //     (user) => user.id === updatedUser.id
+    //   );
+    //   let { usersInDb: users } = this.state;
+    //   users[userIndex] = updatedUser;
+    //   let usersToShow = this.filterUsers(this.state.searchText);
+    //   this.setState({ users, usersToShow });
   };
 
   render() {
-    let usersList = this.state.usersToShow.map((user) => {
+    let usersToDisplay =
+      this.state.searchText === ""
+        ? this.state.users
+        : this.filterUsers(this.state.searchText);
+    let usersList = usersToDisplay.map((user) => {
       return (
         <User
           key={user.id}
@@ -56,7 +59,7 @@ class Users extends Component {
     return (
       <div>
         <div className="form-inline">
-          <div className="column">
+          <div className="searchBox">
             <SearchBox
               name="searchUser"
               id="searchUser"
@@ -65,7 +68,7 @@ class Users extends Component {
               onChange={this.handleSearchBox}
             />
           </div>
-          <div className="column">
+          <div className="new-user-button">
             <button className="button" onClick={this.handleNewUser}>
               Add New User
             </button>

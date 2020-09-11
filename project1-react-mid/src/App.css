@@ -20,12 +20,19 @@
 
 .App-main-row {
   margin: 1rem;
-  display: flex;
 }
 
 .app-main-column {
   padding: 10px;
-  flex: 50%;
+}
+.left {
+  float: left;
+  width: 30%;
+}
+
+.right {
+  float: right;
+  width: 60%;
 }
 .app-border {
   border: solid 1px steelblue;

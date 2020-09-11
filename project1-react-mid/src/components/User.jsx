@@ -20,8 +20,8 @@ class User extends Component {
     this.setState({ tasks, allTasksCompleted });
   }
   isAllTasksCompleted = (tasks) => {
-    let incompletedTasks = tasks.filter((task) => task.completed === false);
-    return !incompletedTasks || incompletedTasks.length === 0;
+    // let incompletedTasks = tasks.filter((task) => task.completed === false);
+    // return !incompletedTasks || incompletedTasks.length === 0;
   };
   handleMouseOver = (event) => {
     let showOtherData = !this.state.showOtherData;
@@ -34,10 +34,8 @@ class User extends Component {
     this.setState({ user });
   };
 
-  getUserClasses = () => {
-    return `user-info ${
-      this.state.allTasksCompleted ? "green-border" : "red-border"
-    }`;
+  getTasksStatus = () => {
+    return `${this.state.allTasksCompleted ? "green" : "red"}`;
   };
 
   deleteUserData = () => {
@@ -57,33 +55,40 @@ class User extends Component {
   render() {
     let { user } = this.state;
     return (
-      <div className={this.getUserClasses()}>
-        <UserBasicInfo data={user} onChange={this.handleUserChange} />
-        <button
-          className="button user-other-data-button"
-          onMouseOver={this.handleMouseOver}
-          id={`user-${user.id}-otherData`}
+      <div className={`card ${this.getTasksStatus()}-border`}>
+        <div
+          className={`card-title ${this.getTasksStatus()}-background ${this.getTasksStatus()}-border`}
         >
-          Other Data
-        </button>
-        {this.state.showOtherData ? (
-          <UserAddress data={user} onChange={this.handleUserChange} />
-        ) : null}
-        <div className="user-update-delete">
+          {user.name}
+        </div>
+        <div className="card-content">
+          <UserBasicInfo data={user} onChange={this.handleUserChange} />
           <button
-            className="button button-group"
-            id={`user-${user.id}-update`}
-            onClick={() => this.props.onUpdate(this.state.user)}
+            className="button user-other-data-button"
+            onMouseOver={this.handleMouseOver}
+            id={`user-${user.id}-otherData`}
           >
-            Update
+            Other Data
           </button>
-          <button
-            className="button button-group"
-            id={`user-${user.id}-delete`}
-            onClick={this.deleteUserData}
-          >
-            Delete
-          </button>
+          {this.state.showOtherData ? (
+            <UserAddress data={user} onChange={this.handleUserChange} />
+          ) : null}
+          <div className="user-update-delete">
+            <button
+              className="button button-group"
+              id={`user-${user.id}-update`}
+              onClick={() => this.props.onUpdate(this.state.user)}
+            >
+              Update
+            </button>
+            <button
+              className="button button-group"
+              id={`user-${user.id}-delete`}
+              onClick={this.deleteUserData}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     );

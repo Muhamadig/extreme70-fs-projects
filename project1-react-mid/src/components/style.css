@@ -1,5 +1,12 @@
-.column {
-  width: 50%;
+.searchBox {
+  width: 60%;
+}
+.search-label {
+  float: left;
+  width: 10%;
+}
+.new-user-button {
+  width: 40%;
 }
 .form-inline {
   display: flex;
@@ -16,19 +23,38 @@
   border: none;
   cursor: pointer;
 }
-.user-info {
+/* Card */
+.card {
   margin: 1rem;
-  padding: 1rem;
+  padding: 0rem 0rem 1rem 0rem;
   border: solid 1px;
+  border-radius: 10px 10px 0 0;
 }
 
 .red-border {
-  border:solid 0.5rem red;
+  border-color: red;
 }
 .green-border {
-  border:solid 0.5rem green;
+  border-color: green;
+}
+.red-background {
+  background-color: red;
+}
+.green-background {
+  background-color: green;
 }
 
+.card-title {
+  padding: 0.5rem;
+  font-weight: bold;
+  color: antiquewhite;
+  border-radius: 10px 10px 0 0;
+  cursor: pointer;
+}
+.card-content {
+}
+
+/*  */
 .user-other-data-button {
   background-color: grey;
   font-size: small;

@@ -10,10 +10,10 @@ class App extends Component {
       <div className="App">
         <header className="App-header">Users ToDo and Posts App</header>
         <div className="App-main-row">
-          <div className="app-main-column app-border">
+          <div className="app-main-column left app-border">
             <Users />
           </div>
-          <div className="app-main-column">Users Details</div>
+          <div className="app-main-column right">Users Details</div>
         </div>
         <footer></footer>
       </div>
