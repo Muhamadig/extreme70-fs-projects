@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FormInput from "../commonComponents/formInput";
 import "./style.css";
+
 class UserBasicInfo extends Component {
   constructor(props) {
     super(props);

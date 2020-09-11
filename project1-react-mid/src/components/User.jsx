@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import * as TasksService from "../restService/tasksService";
+import TasksService from "../restService/tasksService.js";
 import UserAddress from "./UserAddress";
 import UserBasicInfo from "./UserBasicInfo";
 
@@ -15,7 +15,7 @@ class User extends Component {
   }
 
   async componentDidMount() {
-    let tasks = await TasksService.getUsersTodos(this.props.data.id);
+    let tasks = await TasksService.getTaskById(this.props.data.id);
     let allTasksCompleted = this.isAllTasksCompleted(tasks);
     this.setState({ tasks, allTasksCompleted });
   }

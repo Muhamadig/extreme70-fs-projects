@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import SearchBox from "../commonComponents/searchBox";
-import * as UsersApi from "../restService/usersService";
+import UserService from "../restService/usersService";
 import "./style.css";
 import User from "./User";
+import RestService from "../restService/restService";
 class Users extends Component {
   constructor(props) {
     super(props);
     this.state = { users: [], usersToShow: [], searchText: "" };
   }
   async componentDidMount() {
-    let users = await UsersApi.getAllUsers();
-    this.setState({ users, usersToShow: users });
+    let responseMessage = await UserService.loadAllUsers();
+    if (responseMessage !== RestService.responseMessages.OK)
+      alert("Users data was not loaded successfully!!!");
+    else {
+      let users = UserService.getAllUsers();
+      this.setState({ users, usersToShow: users });
+    }
   }
   handleNewUser = () => {};
   handleSearchBox = (event) => {
