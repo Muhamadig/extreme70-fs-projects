@@ -3,6 +3,13 @@ import TasksService from "../restService/tasksService.js";
 import UserAddress from "./UserAddress";
 import UserBasicInfo from "./UserBasicInfo";
 
+/*
+Props:
+data={user}
+onUpdate={this.handleUpdateUser}
+onDelete={this.handleUpdateUser}
+showUserDetails={this.props.showUserDetails}
+*/
 class User extends Component {
   constructor(props) {
     super(props);
@@ -58,8 +65,9 @@ class User extends Component {
       <div className={`card ${this.getTasksStatus()}-border`}>
         <div
           className={`card-title ${this.getTasksStatus()}-background ${this.getTasksStatus()}-border`}
+          onClick={() => this.props.showUserDetails(this.state.user.id)}
         >
-          {user.name}
+          {user.name + " >>"}
         </div>
         <div className="card-content">
           <UserBasicInfo data={user} onChange={this.handleUserChange} />

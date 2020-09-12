@@ -1,30 +1,20 @@
 import React, { Component } from "react";
 import SearchBox from "../commonComponents/searchBox";
-import UserService from "../restService/usersService";
 import "./style.css";
 import User from "./User";
-import RestService from "../restService/restService";
 class Users extends Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], searchText: "" };
+    this.state = { searchText: "" };
   }
-  async componentDidMount() {
-    let responseMessage = await UserService.loadAllUsers();
-    if (responseMessage !== RestService.responseMessages.OK)
-      alert("Users data was not loaded successfully!!!");
-    else {
-      let users = UserService.getAllUsers();
-      this.setState({ users });
-    }
-  }
+
   handleNewUser = () => {};
   handleSearchBox = (event) => {
     let searchText = event.target.value;
     this.setState({ searchText });
   };
-  filterUsers = (searchText) => {
-    let users = this.state.users.filter(
+  filterUsers = (searchText, usersArr) => {
+    let users = usersArr.filter(
       (user) =>
         user.name.toLowerCase().includes(searchText.toLowerCase()) ||
         user.email.toLowerCase().includes(searchText.toLowerCase())
@@ -42,10 +32,11 @@ class Users extends Component {
   };
 
   render() {
+    let { users } = this.props;
     let usersToDisplay =
       this.state.searchText === ""
-        ? this.state.users
-        : this.filterUsers(this.state.searchText);
+        ? users
+        : this.filterUsers(this.state.searchText, users);
     let usersList = usersToDisplay.map((user) => {
       return (
         <User
@@ -53,6 +44,7 @@ class Users extends Component {
           data={user}
           onUpdate={this.handleUpdateUser}
           onDelete={this.handleUpdateUser}
+          showUserDetails={this.props.showUserDetails}
         />
       );
     });
@@ -69,7 +61,7 @@ class Users extends Component {
             />
           </div>
           <div className="new-user-button">
-            <button className="button" onClick={this.handleNewUser}>
+            <button className="button" onClick={this.props.showNewUserForm}>
               Add New User
             </button>
           </div>

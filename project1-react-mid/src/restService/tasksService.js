@@ -1,6 +1,6 @@
 import axios from "axios";
 import RestService from "./restService.js";
-const path = "todo";
+const path = "todos";
 
 var tasks = [];
 let isTasksWasLoaded = false;
@@ -25,6 +25,10 @@ function getTaskById(id) {
   return tasks.find((task) => task.id === id);
 }
 
+function getUserTasksById(userId) {
+  return tasks.filter((task) => task.userId === userId);
+}
+
 function updateTaskById(id, task) {
   let indexOfTask = tasks.findIndex((task) => task.id === id);
   if (indexOfTask === -1) return RestService.responseMessages.TASK_NOT_FOUND;
@@ -37,4 +41,5 @@ export default {
   getAlltasks,
   getTaskById,
   updateTaskById,
+  getUserTasksById,
 };
