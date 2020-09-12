@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import TasksService from "../restService/tasksService";
 import Tasks from "./tasks/Tasks";
 import Posts from "./posts/Posts";
 class UserDetails extends Component {
@@ -14,7 +13,10 @@ class UserDetails extends Component {
         ) : (
           <div>
             <h3>{user.name} Tasks and Posts</h3>
-            <Tasks tasks={user.tasks} />
+            <Tasks
+              tasks={user.tasks}
+              handleTaskCompeletedChange={this.props.handleTaskCompeletedChange}
+            />
             <Posts />
           </div>
         )}

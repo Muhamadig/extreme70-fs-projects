@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import FormInput from "../commonComponents/formInput";
 import "./style.css";
-import { UserConsumer } from "./userContextApi";
 class UserAddress extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleAddressChange = (event, attribute) => {
     let value = event.target.value;
     let address = { ...this.props.data.address };

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import Users from "./components/Users";
-import UserService from "./restService/usersService";
-import RestService from "./restService/restService";
+
 import Main from "./components/Main";
 
 class App extends Component {

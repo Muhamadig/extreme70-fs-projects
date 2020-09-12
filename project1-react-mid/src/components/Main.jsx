@@ -16,7 +16,6 @@ class Main extends Component {
   }
 
   async componentDidMount() {
-    console.log("MAin");
     let responseMessage = await UsersService.loadAllUsers();
     if (responseMessage !== RestService.responseMessages.OK)
       alert("Users data was not loaded successfully!!!");
@@ -44,6 +43,26 @@ class Main extends Component {
     if (user) return user[key];
     return null;
   };
+  handleTaskCompeletedChange = (taskId) => {
+    let tasks = [...this.state.currentUser.tasks];
+    let taskIndex = tasks.findIndex((task) => task.id === taskId);
+    if (taskIndex === -1) {
+      alert("task was not found");
+      return;
+    }
+
+    let task = { ...tasks[taskIndex] };
+    task.completed = !task.completed;
+    let responseMessage = TasksService.updateTaskById(taskId, task);
+    if (responseMessage !== RestService.responseMessages.OK) {
+      alert(responseMessage);
+      return;
+    }
+    let currentUser = { ...this.state.currentUser };
+    tasks = TasksService.getUserTasksById(currentUser.id);
+    currentUser.tasks = tasks;
+    this.setState({ currentUser });
+  };
   render() {
     return (
       <div className="App-main-row">
@@ -58,8 +77,7 @@ class Main extends Component {
           {this.state.showDetails ? (
             <UserDetails
               userDeatils={this.state.currentUser}
-              userName={this.state.currentUser.name}
-              userId={this.state.currentUser.id}
+              handleTaskCompeletedChange={this.handleTaskCompeletedChange}
             />
           ) : (
             <AddNewUser />

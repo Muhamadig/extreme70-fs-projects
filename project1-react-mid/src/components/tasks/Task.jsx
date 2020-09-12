@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import tasksService from "../../restService/tasksService";
 class Task extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +19,9 @@ class Task extends Component {
             className={`button button-${task.completed ? "green" : "red"}`}
             id="completed"
             name="completed"
+            onClick={() => {
+              this.props.handleTaskCompeletedChange(task.id);
+            }}
           >
             {task.completed ? "Yes" : "No"}
           </button>

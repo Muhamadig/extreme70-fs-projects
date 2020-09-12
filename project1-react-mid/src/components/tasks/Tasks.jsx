@@ -8,7 +8,13 @@ class Tasks extends Component {
   render() {
     let tasks = this.props.tasks;
     let tasksList = tasks.map((task) => {
-      return <Task task={task} />;
+      return (
+        <Task
+          key={task.id}
+          task={task}
+          handleTaskCompeletedChange={this.props.handleTaskCompeletedChange}
+        />
+      );
     });
     return (
       <div>

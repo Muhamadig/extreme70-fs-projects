@@ -3,10 +3,6 @@ import FormInput from "../commonComponents/formInput";
 import "./style.css";
 
 class UserBasicInfo extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   handleUserChange = (event, attribute) => {
     let value = event.target.value;
     this.props.onChange(attribute, value);
