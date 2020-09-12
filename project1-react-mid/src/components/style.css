@@ -80,3 +80,60 @@
   display: inline-block;
   margin: 0rem 0.5rem;
 }
+
+.tasks,
+.posts {
+  border: solid 1px green;
+  width: 50%;
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 2rem;
+}
+.toolbar {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  background-color: greenyellow;
+  /* width: 50%; */
+  border-radius: 10px 10px 0px 0px;
+  padding-left: 1rem;
+}
+.toolbar .details-label {
+  float: left;
+  width: 80%;
+  color: green;
+}
+.toolbar .button {
+  float: right;
+  border-radius: 0px;
+  background-color: green;
+}
+
+.task-card {
+  border-left: solid 10px greenyellow;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+}
+
+.task-card .title {
+  padding: 1px;
+  margin-bottom: 1rem;
+}
+.task-card .completed label {
+  font-weight: bold;
+  /* padding: 1px; */
+  /* margin-bottom: 1rem; */
+}
+.task-card .completed .button {
+  font-size: medium;
+  padding: 5px 20px;
+  border-radius: 0px;
+}
+
+.button-green {
+  background-color: green;
+}
+
+.button-red {
+  background-color: red;
+}

@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import TasksService from "../restService/tasksService";
+import Tasks from "./tasks/Tasks";
+import Posts from "./posts/Posts";
 class UserDetails extends Component {
   state = { tasks: [] };
 
@@ -12,11 +14,8 @@ class UserDetails extends Component {
         ) : (
           <div>
             <h3>{user.name} Tasks and Posts</h3>
-            <ul>
-              {user.tasks.map((task) => {
-                return <li>{task.title}</li>;
-              })}
-            </ul>
+            <Tasks tasks={user.tasks} />
+            <Posts />
           </div>
         )}
       </div>
