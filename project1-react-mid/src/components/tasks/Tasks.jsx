@@ -21,11 +21,11 @@ class Tasks extends Component {
         <div className="tasks">
           <div className="toolbar">
             <h4 className="details-label">Todos</h4>
-            <button className="button">Add</button>
+            <button className="button" onClick={this.props.handleAddNewTaskButtonClick}>
+              Add
+            </button>
           </div>
-          <div className="tasks-list">
-            <ul>{tasksList}</ul>
-          </div>
+          <div className="tasks-list">{tasksList}</div>
         </div>
       </div>
     );

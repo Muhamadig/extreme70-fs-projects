@@ -28,6 +28,12 @@ function getTaskById(id) {
 function getUserTasksById(userId) {
   return tasks.filter((task) => task.userId === userId);
 }
+function isAllUSerTasksCompleted(userId) {
+  let userTasks = getUserTasksById(userId);
+  let unCompletedTasks = userTasks.filter((task) => !task.completed);
+  if (unCompletedTasks && unCompletedTasks.length > 0) return false;
+  return true;
+}
 
 function updateTaskById(id, task) {
   let indexOfTask = tasks.findIndex((task) => task.id === id);
@@ -42,4 +48,5 @@ export default {
   getTaskById,
   updateTaskById,
   getUserTasksById,
+  isAllUSerTAsksCompleted: isAllUSerTasksCompleted,
 };

@@ -26,6 +26,14 @@ class Main extends Component {
     responseMessage = await TasksService.loadAlltasks();
     if (responseMessage !== RestService.responseMessages.OK)
       alert("Tasks was not loaded successfully!!!");
+    else {
+      let firstUser = { ...this.state.users[0] };
+      let { currentUser } = this.state;
+      currentUser.id = firstUser.id;
+      currentUser.name = firstUser.name;
+      currentUser.tasks = TasksService.getUserTasksById(firstUser.id);
+      this.setState({ currentUser });
+    }
   }
   showNewUserForm = () => {
     this.setState({ showDetails: false });
@@ -63,6 +71,9 @@ class Main extends Component {
     currentUser.tasks = tasks;
     this.setState({ currentUser });
   };
+  handleAddNewTask = (userId) => {
+    console.log(userId);
+  };
   render() {
     return (
       <div className="App-main-row">
@@ -78,6 +89,7 @@ class Main extends Component {
             <UserDetails
               userDeatils={this.state.currentUser}
               handleTaskCompeletedChange={this.handleTaskCompeletedChange}
+              handleAddNewTask={this.handleAddNewTask}
             />
           ) : (
             <AddNewUser />

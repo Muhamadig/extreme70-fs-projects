@@ -15,20 +15,13 @@ class User extends Component {
     super(props);
     this.state = {
       user: props.data,
-      tasks: [],
-      allTasksCompleted: false,
       showOtherData: false,
     };
   }
 
-  async componentDidMount() {
-    let tasks = await TasksService.getTaskById(this.props.data.id);
-    let allTasksCompleted = this.isAllTasksCompleted(tasks);
-    this.setState({ tasks, allTasksCompleted });
-  }
-  isAllTasksCompleted = (tasks) => {
-    // let incompletedTasks = tasks.filter((task) => task.completed === false);
-    // return !incompletedTasks || incompletedTasks.length === 0;
+  async componentDidMount() {}
+  isAllTasksCompleted = () => {
+    return TasksService.isAllUSerTAsksCompleted(this.state.user.id);
   };
   handleMouseOver = (event) => {
     let showOtherData = !this.state.showOtherData;
@@ -42,22 +35,20 @@ class User extends Component {
   };
 
   getTasksStatus = () => {
-    return `${this.state.allTasksCompleted ? "green" : "red"}`;
+    return `${this.isAllTasksCompleted() ? "green" : "red"}`;
   };
 
   deleteUserData = () => {
-    let { user } = { ...this.state };
-    for (const attribute in user) {
-      if (attribute !== "id") {
-        user[attribute] = "";
-      }
-    }
-
-    let tasks = [];
-    let allTasksCompleted = this.isAllTasksCompleted(tasks);
-    this.setState({ user, tasks, allTasksCompleted });
-
-    this.props.onDelete(user);
+    // let { user } = { ...this.state };
+    // for (const attribute in user) {
+    //   if (attribute !== "id") {
+    //     user[attribute] = "";
+    //   }
+    // }
+    // let tasks = [];
+    // let allTasksCompleted = this.isAllTasksCompleted(tasks);
+    // this.setState({ user, tasks, allTasksCompleted });
+    // this.props.onDelete(user);
   };
   render() {
     let { user } = this.state;
