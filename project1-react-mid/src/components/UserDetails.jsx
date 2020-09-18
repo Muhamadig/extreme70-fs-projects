@@ -12,6 +12,12 @@ class UserDetails extends Component {
     e.preventDefault();
     this.setState({ tasksSection: "tasks" });
   };
+
+  handleAddNewTask = (e, task) => {
+    e.preventDefault();
+    this.setState({ tasksSection: "tasks" });
+    this.props.handleAddNewTask(task);
+  };
   render() {
     let user = this.props.userDeatils;
     return (
@@ -32,7 +38,10 @@ class UserDetails extends Component {
                 }
               />
             ) : (
-              <NewTask onCancel={this.cancelAddTask} onAdd={this.add} />
+              <NewTask
+                onCancel={this.cancelAddTask}
+                onAdd={this.handleAddNewTask}
+              />
             )}
             <Posts />
           </div>

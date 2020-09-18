@@ -13,7 +13,10 @@ class NewTask extends Component {
     return (
       <div className="add-new-task">
         <div className="title">Add New Task</div>
-        <form className="task-form">
+        <form
+          className="task-form"
+          onSubmit={(e) => this.props.onAdd(e, this.state.title)}
+        >
           <div>
             <label htmlFor="tasks-title">Title: </label>
             <input

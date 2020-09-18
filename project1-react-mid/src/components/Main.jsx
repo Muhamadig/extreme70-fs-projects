@@ -71,8 +71,19 @@ class Main extends Component {
     currentUser.tasks = tasks;
     this.setState({ currentUser });
   };
-  handleAddNewTask = (userId) => {
-    console.log(userId);
+  handleAddNewTask = (taskTitle) => {
+    let newTask = {
+      title: taskTitle,
+      userId: this.state.currentUser.id,
+      completed: false,
+    };
+
+    let response = TasksService.addNewTask(newTask);
+    if (response === RestService.responseMessages.OK) {
+      let currentUser = { ...this.state.currentUser };
+      currentUser.tasks = TasksService.getUserTasksById(currentUser.id);
+      this.setState({ currentUser });
+    }
   };
   render() {
     return (
