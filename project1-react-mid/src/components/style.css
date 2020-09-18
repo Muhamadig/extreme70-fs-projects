@@ -98,10 +98,15 @@
   border-radius: 10px 10px 0px 0px;
   padding-left: 1rem;
 }
+.tasks .toolbar,
+.posts .toolbar {
+  cursor: pointer;
+}
 .toolbar .details-label {
   float: left;
   width: 80%;
   color: green;
+  padding-left: 0.5rem;
 }
 .toolbar .button {
   float: right;
@@ -173,4 +178,8 @@
   padding: 10px;
   border-radius: 0px;
   background-color: red;
+}
+
+.uncompleted-checkbox {
+  margin-left: 1rem;
 }
