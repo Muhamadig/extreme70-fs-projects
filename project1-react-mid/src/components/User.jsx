@@ -1,31 +1,27 @@
 import React, { Component } from "react";
-import * as TasksService from "../restService/tasksService";
-import UserAddress from "./UserAdress";
+import TasksService from "../restService/tasksService.js";
+import UserAddress from "./UserAddress";
 import UserBasicInfo from "./UserBasicInfo";
 
+/*
+Props:
+data={user}
+onUpdate={this.handleUpdateUser}
+onDelete={this.handleUpdateUser}
+showUserDetails={this.props.showUserDetails}
+*/
 class User extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: props.data,
-      tasks: [],
-      allTasksCompleted: false,
       showOtherData: false,
     };
   }
 
-  async componentDidMount() {
-    let tasks = await TasksService.getUsersTodos(this.props.data.id);
-    this.setState({ tasks }, () => {
-      this.isAllTasksCompleted();
-    });
-  }
+  async componentDidMount() {}
   isAllTasksCompleted = () => {
-    let incompletedTasks = this.state.tasks.filter(
-      (task) => task.completed === false
-    );
-    let allTasksCompleted = incompletedTasks.length === 0;
-    this.setState({ allTasksCompleted });
+    return TasksService.isAllUSerTAsksCompleted(this.state.user.id);
   };
   handleMouseOver = (event) => {
     let showOtherData = !this.state.showOtherData;
@@ -38,37 +34,60 @@ class User extends Component {
     this.setState({ user });
   };
 
-  getUserClasses = () => {
-    return `user-info ${
-      this.state.allTasksCompleted ? "green-border" : "red-border"
-    }`;
+  getTasksStatus = () => {
+    return `${this.isAllTasksCompleted() ? "green" : "red"}`;
+  };
+
+  deleteUserData = () => {
+    // let { user } = { ...this.state };
+    // for (const attribute in user) {
+    //   if (attribute !== "id") {
+    //     user[attribute] = "";
+    //   }
+    // }
+    // let tasks = [];
+    // let allTasksCompleted = this.isAllTasksCompleted(tasks);
+    // this.setState({ user, tasks, allTasksCompleted });
+    // this.props.onDelete(user);
   };
   render() {
     let { user } = this.state;
     return (
-      <div className={this.getUserClasses()}>
-        <UserBasicInfo data={user} onChange={this.handleUserChange} />
-        <button
-          className="button user-other-data-button"
-          onMouseOver={this.handleMouseOver}
-          id={`user-${user.id}-otherData`}
+      <div className={`card ${this.getTasksStatus()}-border`}>
+        <div
+          className={`card-title ${this.getTasksStatus()}-background ${this.getTasksStatus()}-border`}
+          onClick={() => this.props.showUserDetails(this.state.user.id)}
         >
-          Other Data
-        </button>
-        {this.state.showOtherData ? (
-          <UserAddress data={user} onChange={this.handleUserChange} />
-        ) : null}
-        <div className="user-update-delete">
+          {user.name + " >>"}
+        </div>
+        <div className="card-content">
+          <UserBasicInfo data={user} onChange={this.handleUserChange} />
           <button
-            className="button button-group"
-            id={`user-${user.id}-update`}
-            onClick={() => this.props.onUpdate(this.state.user)}
+            className="button user-other-data-button"
+            onMouseOver={this.handleMouseOver}
+            id={`user-${user.id}-otherData`}
           >
-            Update
+            Other Data
           </button>
-          <button className="button button-group" id={`user-${user.id}-delete`}>
-            Delete
-          </button>
+          {this.state.showOtherData ? (
+            <UserAddress data={user} onChange={this.handleUserChange} />
+          ) : null}
+          <div className="user-update-delete">
+            <button
+              className="button button-group"
+              id={`user-${user.id}-update`}
+              onClick={() => this.props.onUpdate(this.state.user)}
+            >
+              Update
+            </button>
+            <button
+              className="button button-group"
+              id={`user-${user.id}-delete`}
+              onClick={this.deleteUserData}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     );

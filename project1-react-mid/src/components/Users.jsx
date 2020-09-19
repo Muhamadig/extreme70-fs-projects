@@ -1,56 +1,57 @@
 import React, { Component } from "react";
 import SearchBox from "../commonComponents/searchBox";
-import * as UsersApi from "../restService/usersService";
 import "./style.css";
 import User from "./User";
 class Users extends Component {
   constructor(props) {
     super(props);
-    this.state = { users: [], usersToShow: [], searchText: "" };
+    this.state = { searchText: "" };
   }
-  async componentDidMount() {
-    let users = await UsersApi.getAllUsers();
-    this.setState({ users, usersToShow: users });
-  }
+
   handleNewUser = () => {};
   handleSearchBox = (event) => {
     let searchText = event.target.value;
-    let usersToShow = this.filterUsers(searchText);
-    this.setState({ searchText, usersToShow });
+    this.setState({ searchText });
   };
-  filterUsers = (searchText) => {
-    let usersToShow = this.state.users.filter(
+  filterUsers = (searchText, usersArr) => {
+    let users = usersArr.filter(
       (user) =>
         user.name.toLowerCase().includes(searchText.toLowerCase()) ||
         user.email.toLowerCase().includes(searchText.toLowerCase())
     );
-    return usersToShow;
+    return users;
   };
   handleUpdateUser = (updatedUser) => {
-    let userIndex = this.state.users.findIndex(
-      (user) => user.id === updatedUser.id
-    );
-    let { users } = this.state;
-    users[userIndex] = updatedUser;
-    let usersToShow = this.filterUsers(this.state.searchText);
-    this.setState({ users, usersToShow });
+    //   let userIndex = this.state.usersInDb.findIndex(
+    //     (user) => user.id === updatedUser.id
+    //   );
+    //   let { usersInDb: users } = this.state;
+    //   users[userIndex] = updatedUser;
+    //   let usersToShow = this.filterUsers(this.state.searchText);
+    //   this.setState({ users, usersToShow });
   };
-  handleDeleteUser = (userId) => {};
+
   render() {
-    let usersList = this.state.usersToShow.map((user) => {
+    let { users } = this.props;
+    let usersToDisplay =
+      this.state.searchText === ""
+        ? users
+        : this.filterUsers(this.state.searchText, users);
+    let usersList = usersToDisplay.map((user) => {
       return (
         <User
           key={user.id}
           data={user}
           onUpdate={this.handleUpdateUser}
-          onDelete={this.handleDeleteUser}
+          onDelete={this.handleUpdateUser}
+          showUserDetails={this.props.showUserDetails}
         />
       );
     });
     return (
       <div>
         <div className="form-inline">
-          <div className="column">
+          <div className="searchBox">
             <SearchBox
               name="searchUser"
               id="searchUser"
@@ -59,8 +60,8 @@ class Users extends Component {
               onChange={this.handleSearchBox}
             />
           </div>
-          <div className="column">
-            <button className="button" onClick={this.handleNewUser}>
+          <div className="new-user-button">
+            <button className="button" onClick={this.props.showNewUserForm}>
               Add New User
             </button>
           </div>

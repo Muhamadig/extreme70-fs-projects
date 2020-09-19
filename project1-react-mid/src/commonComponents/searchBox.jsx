@@ -5,7 +5,7 @@ const SearchBox = ({ name, id, placeholder, label, onChange }) => {
   return (
     <div>
       <label htmlFor="searchUser" className="search-label">
-        {label}{" "}
+        {label}
       </label>
       <input
         type="search"

@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import FormInput from "../commonComponents/formInput";
 import "./style.css";
-class UserBasicInfo extends Component {
-  constructor(props) {
-    super(props);
-  }
 
+class UserBasicInfo extends Component {
   handleUserChange = (event, attribute) => {
     let value = event.target.value;
     this.props.onChange(attribute, value);
