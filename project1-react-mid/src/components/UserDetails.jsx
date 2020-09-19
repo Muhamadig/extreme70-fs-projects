@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Tasks from "./tasks/Tasks";
+import NewPost from "./posts/NewPost";
 import NewTask from "./tasks/NewTask";
 import Posts from "./posts/Posts";
 class UserDetails extends Component {
@@ -43,7 +44,17 @@ class UserDetails extends Component {
                 onAdd={this.handleAddNewTask}
               />
             )}
-            <Posts />
+            {this.state.postsSection === "posts" ? (
+              <Posts
+                handleAddNewPostButtonClick={this.handleAddNewPostkButtonClick}
+                posts={user.posts}
+              />
+            ) : (
+              <NewPost
+                onCancel={this.cancelAddTask}
+                onAdd={this.handleAddNewPost}
+              />
+            )}
           </div>
         )}
       </div>

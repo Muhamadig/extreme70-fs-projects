@@ -27,6 +27,7 @@ class Posts extends Component {
             <h4 className="details-label">Posts</h4>
             <button className="button">Add</button>
           </div>
+          {this.state.showPostsList ? <div className="posts-list"></div> : null}
         </div>
       </div>
     );

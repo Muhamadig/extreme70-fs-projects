@@ -50,17 +50,21 @@ class Tasks extends Component {
               Add
             </button>
           </div>
-          <input
-            checked={this.state.showUncompletedOnly}
-            className="checkbox uncompleted-checkbox"
-            type="checkbox"
-            name="uncompletedTasks"
-            id="uncompletedTasks"
-            onChange={this.handleUncompletedTasksCheckbox}
-          />
-          <label htmlFor="uncompletedTasks">Uncompleted Tasks Only</label>
+
           {this.state.showTasksList ? (
-            <div className="tasks-list">{tasksList}</div>
+            <div className="tasks-list">
+              <div className="checkbox uncompleted-checkbox">
+                <input
+                  checked={this.state.showUncompletedOnly}
+                  type="checkbox"
+                  name="uncompletedTasks"
+                  id="uncompletedTasks"
+                  onChange={this.handleUncompletedTasksCheckbox}
+                />
+                <label htmlFor="uncompletedTasks">Uncompleted Tasks Only</label>
+              </div>
+              {tasksList}
+            </div>
           ) : null}
         </div>
       </div>
