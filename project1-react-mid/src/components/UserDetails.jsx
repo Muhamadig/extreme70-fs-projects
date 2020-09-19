@@ -9,6 +9,9 @@ class UserDetails extends Component {
   handleAddNewTaskButtonClick = () => {
     this.setState({ tasksSection: "addNew" });
   };
+  handleAddNewPostButtonClick = () => {
+    this.setState({ postsSection: "addNew" });
+  };
   cancelAddTask = (e) => {
     e.preventDefault();
     this.setState({ tasksSection: "tasks" });
@@ -46,7 +49,7 @@ class UserDetails extends Component {
             )}
             {this.state.postsSection === "posts" ? (
               <Posts
-                handleAddNewPostButtonClick={this.handleAddNewPostkButtonClick}
+                handleAddNewPostButtonClick={this.handleAddNewPostButtonClick}
                 posts={user.posts}
               />
             ) : (

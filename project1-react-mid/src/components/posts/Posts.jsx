@@ -4,6 +4,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
+import Post from "./Post";
 class Posts extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,9 @@ class Posts extends Component {
     this.setState({ showPostsList: !this.state.showPostsList });
   };
   render() {
+    let postsList = this.props.posts.map((post) => {
+      return <Post key={post.id} post={post} />;
+    });
     return (
       <div>
         <div className="posts">
@@ -25,9 +29,16 @@ class Posts extends Component {
               }
             />
             <h4 className="details-label">Posts</h4>
-            <button className="button">Add</button>
+            <button
+              className="button"
+              onClick={this.props.handleAddNewPostButtonClick}
+            >
+              Add
+            </button>
           </div>
-          {this.state.showPostsList ? <div className="posts-list"></div> : null}
+          {this.state.showPostsList ? (
+            <div className="posts-list">{postsList}</div>
+          ) : null}
         </div>
       </div>
     );

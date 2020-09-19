@@ -121,7 +121,19 @@
   border-radius: 10px;
 }
 
+.post-card {
+  border-left: solid 10px greenyellow;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 10px;
+}
+
 .task-card .title {
+  padding: 1px;
+  margin-bottom: 1rem;
+}
+
+.post-card .title {
   padding: 1px;
   margin-bottom: 1rem;
 }
@@ -135,7 +147,10 @@
   padding: 5px 20px;
   border-radius: 0px;
 }
-
+.post-body p {
+  margin-top: 0.5rem;
+  padding-left: 2rem;
+}
 .button-green {
   background-color: green;
 }

@@ -5,26 +5,19 @@ class Post extends Component {
     this.state = {};
   }
   render() {
-    let task = this.props.task;
+    let post = this.props.post;
     return (
-      <div className="task-card">
+      <div className="post-card">
         <div className="title">
-          <label htmlFor="taskTitle">
-            <b>Title:</b> {task.title}
+          <label htmlFor="postTitle">
+            <b>Title:</b> {post.title}
           </label>
         </div>
-        <div className="completed">
-          <label htmlFor="completed">Completed: </label>
-          <button
-            className={`button button-${task.completed ? "green" : "red"}`}
-            id="completed"
-            name="completed"
-            onClick={() => {
-              this.props.handleTaskCompeletedChange(task.id);
-            }}
-          >
-            {task.completed ? "Yes" : "No"}
-          </button>
+        <div className="post-body">
+          <label>
+            <b>Body:</b>
+          </label>
+          <p>{post.body}</p>
         </div>
       </div>
     );

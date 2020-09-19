@@ -5,6 +5,7 @@ import UserDetails from "../components/UserDetails";
 import AddNewUser from "../components/AddNewUser";
 import Users from "./Users";
 import TasksService from "../restService/tasksService";
+import PostsService from "../restService/postService";
 class Main extends Component {
   constructor(props) {
     super(props);
@@ -24,16 +25,22 @@ class Main extends Component {
       this.setState({ users });
     }
     responseMessage = await TasksService.loadAlltasks();
-    if (responseMessage !== RestService.responseMessages.OK)
+    if (responseMessage !== RestService.responseMessages.OK) {
       alert("Tasks was not loaded successfully!!!");
-    else {
-      let firstUser = { ...this.state.users[0] };
-      let { currentUser } = this.state;
-      currentUser.id = firstUser.id;
-      currentUser.name = firstUser.name;
-      currentUser.tasks = TasksService.getUserTasksById(firstUser.id);
-      this.setState({ currentUser });
+      return;
     }
+    responseMessage = await PostsService.loadAllposts();
+    if (responseMessage !== RestService.responseMessages.OK) {
+      alert("Posts was not loaded successfully!!!");
+      return;
+    }
+    let firstUser = { ...this.state.users[0] };
+    let { currentUser } = this.state;
+    currentUser.id = firstUser.id;
+    currentUser.name = firstUser.name;
+    currentUser.tasks = TasksService.getUserTasksById(firstUser.id);
+    currentUser.posts = PostsService.getUserPostsById(firstUser.id);
+    this.setState({ currentUser });
   }
   showNewUserForm = () => {
     this.setState({ showDetails: false });
