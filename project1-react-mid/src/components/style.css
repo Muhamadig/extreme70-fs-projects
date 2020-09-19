@@ -83,7 +83,8 @@
 
 .tasks,
 .posts,
-.add-new-task {
+.add-new-task,
+.add-new-post {
   border: solid 1px green;
   width: 50%;
   border-radius: 10px 10px 0px 0px;
@@ -162,7 +163,17 @@
 .add-new-task {
   border-radius: 10px 10px 0px 0px;
 }
+
+.add-new-post {
+  border-radius: 10px 10px 0px 0px;
+}
 .add-new-task .title {
+  background-color: limegreen;
+  border-radius: 10px 10px 0px 0px;
+  padding: 1rem;
+  font-weight: bolder;
+}
+.add-new-post .title {
   background-color: limegreen;
   border-radius: 10px 10px 0px 0px;
   padding: 1rem;
@@ -172,10 +183,27 @@
 .task-form {
   margin: 1rem;
 }
+
+.post-form {
+  margin: 1rem;
+}
 .task-form label {
   padding: 1rem;
+  display: inline-block;
+  width: 2rem;
+  text-align: right;
+}
+
+.post-form label {
+  padding: 1rem;
+  display: inline-block;
+  width: 2rem;
+  text-align: right;
 }
 .task-form input[type="text"] {
+  margin-left: 1rem;
+}
+.post-form input[type="text"] {
   margin-left: 1rem;
 }
 
