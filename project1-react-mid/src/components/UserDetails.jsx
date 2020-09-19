@@ -16,11 +16,20 @@ class UserDetails extends Component {
     e.preventDefault();
     this.setState({ tasksSection: "tasks" });
   };
+  cancelAddPost = (e) => {
+    e.preventDefault();
+    this.setState({ postsSection: "posts" });
+  };
 
   handleAddNewTask = (e, task) => {
     e.preventDefault();
     this.setState({ tasksSection: "tasks" });
     this.props.handleAddNewTask(task);
+  };
+  handleAddNewPost = (e, post) => {
+    e.preventDefault();
+    this.setState({ postsSection: "posts" });
+    this.props.handleAddNewPost(post);
   };
   render() {
     let user = this.props.userDeatils;
@@ -54,7 +63,7 @@ class UserDetails extends Component {
               />
             ) : (
               <NewPost
-                onCancel={this.cancelAddTask}
+                onCancel={this.cancelAddPost}
                 onAdd={this.handleAddNewPost}
               />
             )}

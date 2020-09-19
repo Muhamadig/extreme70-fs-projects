@@ -51,6 +51,7 @@ class Main extends Component {
     currentUser.id = userId;
     currentUser.name = this.getUserProperty(userId, "name");
     currentUser.tasks = TasksService.getUserTasksById(userId);
+    currentUser.posts = PostsService.getUserPostsById(userId);
     this.setState({ showDetails: true, currentUser });
   };
   getUserProperty = (id, key) => {
@@ -92,6 +93,21 @@ class Main extends Component {
       this.setState({ currentUser });
     }
   };
+  handleAddNewPost = (post) => {
+    let newPost = {
+      title: post.title,
+      userId: this.state.currentUser.id,
+      body: post.body,
+    };
+
+    let response = PostsService.addNewPost(newPost);
+    if (response === RestService.responseMessages.OK) {
+      let currentUser = { ...this.state.currentUser };
+      currentUser.posts = PostsService.getUserPostsById(currentUser.id);
+      this.setState({ currentUser });
+    }
+  };
+
   render() {
     return (
       <div className="App-main-row">
@@ -108,6 +124,7 @@ class Main extends Component {
               userDeatils={this.state.currentUser}
               handleTaskCompeletedChange={this.handleTaskCompeletedChange}
               handleAddNewTask={this.handleAddNewTask}
+              handleAddNewPost={this.handleAddNewPost}
             />
           ) : (
             <AddNewUser />
