@@ -19,7 +19,6 @@ class User extends Component {
     };
   }
 
-  async componentDidMount() {}
   isAllTasksCompleted = () => {
     return TasksService.isAllUSerTAsksCompleted(this.state.user.id);
   };
@@ -83,7 +82,7 @@ class User extends Component {
             <button
               className="button button-group"
               id={`user-${user.id}-delete`}
-              onClick={this.deleteUserData}
+              onClick={() => this.props.onDeleteData(user.id)}
             >
               Delete
             </button>

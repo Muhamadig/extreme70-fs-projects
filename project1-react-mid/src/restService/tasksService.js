@@ -58,6 +58,10 @@ function addNewTask(task) {
   }
   return RestService.responseMessages.SERVER_ERROR;
 }
+
+function deleteAllUserTaksById(userId) {
+  tasks = tasks.filter((task) => task.userId !== userId);
+}
 export default {
   loadAlltasks,
   getAlltasks,
@@ -66,4 +70,5 @@ export default {
   getUserTasksById,
   isAllUSerTAsksCompleted: isAllUSerTasksCompleted,
   addNewTask,
+  deleteAllUserTaksById,
 };
