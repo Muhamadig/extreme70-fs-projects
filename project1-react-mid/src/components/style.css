@@ -43,6 +43,9 @@
 .green-background {
   background-color: green;
 }
+.steelblue-background {
+  background-color: steelblue;
+}
 
 .card-title {
   padding: 0.5rem;
@@ -86,6 +89,12 @@
 .add-new-task,
 .add-new-post {
   border: solid 1px green;
+  width: 50%;
+  border-radius: 10px 10px 0px 0px;
+  margin-top: 2rem;
+}
+.add-new-user {
+  border: solid 1px steelblue;
   width: 50%;
   border-radius: 10px 10px 0px 0px;
   margin-top: 2rem;
@@ -179,7 +188,26 @@
   padding: 1rem;
   font-weight: bolder;
 }
-
+.add-new-user .title {
+  background-color: steelblue;
+  border-radius: 10px 10px 0px 0px;
+  padding: 1rem;
+  font-weight: bolder;
+  color: aliceblue;
+}
+.add-new-user-form {
+  margin: 1rem;
+}
+.add-new-user-form-input label {
+  display: inline-block;
+  width: 6rem;
+  text-align: right;
+  padding: 1rem;
+}
+.add-new-user-form-input input {
+  /* padding: 0.2rem; */
+  /* border-radius: 1px; */
+}
 .task-form {
   margin: 1rem;
 }

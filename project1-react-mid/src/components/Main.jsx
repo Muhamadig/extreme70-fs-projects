@@ -160,6 +160,25 @@ class Main extends Component {
       this.setState({ currentUser });
     }
   };
+
+  cancelAddNewUser = (e) => {
+    e.preventDefault();
+    this.setState({ showDetails: true });
+  };
+
+  handleAddNewUser = (e, newUser) => {
+    e.preventDefault();
+    newUser = UsersService.addNewUser(newUser);
+    let users = UsersService.getAllUsers();
+    let currentUser = {
+      id: newUser.id,
+      name: newUser.name,
+      tasks: [],
+      posts: [],
+    };
+    this.setState({ showDetails: true });
+    this.setState({ users, currentUser });
+  };
   render() {
     return (
       <div className="App-main-row">
@@ -181,7 +200,10 @@ class Main extends Component {
               handleAddNewPost={this.handleAddNewPost}
             />
           ) : (
-            <AddNewUser />
+            <AddNewUser
+              handleAddNewUser={this.handleAddNewUser}
+              onCancel={this.cancelAddNewUser}
+            />
           )}
         </div>
       </div>

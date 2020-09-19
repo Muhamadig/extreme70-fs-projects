@@ -37,7 +37,7 @@ function addNewUser(user) {
   let newSize = users.push(user);
   if (newSize === sizeBefore + 1) {
     usersLastId++;
-    return RestService.responseMessages.OK;
+    return user;
   }
   return RestService.responseMessages.SERVER_ERROR;
 }
