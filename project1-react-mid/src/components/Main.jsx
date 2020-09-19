@@ -108,12 +108,55 @@ class Main extends Component {
     }
   };
 
+  handleUpdateUser = (updatedUser) => {
+    let responseMessage = UsersService.updateUserById(
+      updatedUser.id,
+      updatedUser
+    );
+
+    if (responseMessage === RestService.responseMessages.OK) {
+      let users = UsersService.getAllUsers();
+      if (updatedUser.id === this.state.currentUser.id) {
+        let user = UsersService.getUserById(updatedUser.id);
+        let currentUser = { ...this.state.currentUser };
+        currentUser.name = user.name;
+        this.setState({ users, currentUser });
+      } else this.setState({ users });
+    }
+  };
+  handleDeleteUserData = (userId) => {
+    let user = UsersService.getUserById(userId);
+    for (const key in user) {
+      if (user.hasOwnProperty(key) && key !== "id") {
+        switch (typeof user[key]) {
+          case "number":
+            user[key] = 0;
+            break;
+          case "string":
+            user[key] = "";
+            break;
+          case "boolean":
+            user[key] = false;
+            break;
+          case "object":
+            if (Array.isArray(user[key])) user[key] = [];
+            user[key] = {};
+            break;
+          default:
+            user[key] = null;
+        }
+      }
+    }
+    this.handleUpdateUser(user);
+  };
   render() {
     return (
       <div className="App-main-row">
         <div className="app-main-column left app-border">
           <Users
             users={this.state.users}
+            handleUpdateUser={this.handleUpdateUser}
+            handleDeleteUserData={this.handleDeleteUserData}
             showNewUserForm={this.showNewUserForm}
             showUserDetails={this.showUserDetails}
           />

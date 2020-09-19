@@ -21,15 +21,6 @@ class Users extends Component {
     );
     return users;
   };
-  handleUpdateUser = (updatedUser) => {
-    //   let userIndex = this.state.usersInDb.findIndex(
-    //     (user) => user.id === updatedUser.id
-    //   );
-    //   let { usersInDb: users } = this.state;
-    //   users[userIndex] = updatedUser;
-    //   let usersToShow = this.filterUsers(this.state.searchText);
-    //   this.setState({ users, usersToShow });
-  };
 
   render() {
     let { users } = this.props;
@@ -42,8 +33,8 @@ class Users extends Component {
         <User
           key={user.id}
           data={user}
-          onUpdate={this.handleUpdateUser}
-          onDelete={this.handleUpdateUser}
+          onUpdate={this.props.handleUpdateUser}
+          onDeleteData={this.props.handleDeleteUserData}
           showUserDetails={this.props.showUserDetails}
         />
       );
