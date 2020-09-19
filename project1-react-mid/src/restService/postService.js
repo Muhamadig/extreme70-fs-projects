@@ -52,6 +52,10 @@ function addNewPost(post) {
   }
   return RestService.responseMessages.SERVER_ERROR;
 }
+
+function deleteAllUserPostsById(userId) {
+  posts = posts.filter((post) => post.userId !== userId);
+}
 export default {
   loadAllposts,
   getAllposts,
@@ -59,4 +63,5 @@ export default {
   updatePostById,
   getUserPostsById,
   addNewPost,
+  deleteAllUserPostsById,
 };

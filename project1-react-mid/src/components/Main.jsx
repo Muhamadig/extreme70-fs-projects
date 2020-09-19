@@ -148,6 +148,17 @@ class Main extends Component {
       }
     }
     this.handleUpdateUser(user);
+
+    // handle delete tasks and posts
+    TasksService.deleteAllUserTaksById(userId);
+    PostsService.deleteAllUserPostsById(userId);
+
+    if (this.state.currentUser.id === userId) {
+      let currentUser = { ...this.state.currentUser };
+      currentUser.tasks = TasksService.getUserTasksById(userId);
+      currentUser.posts = PostsService.getUserPostsById(userId);
+      this.setState({ currentUser });
+    }
   };
   render() {
     return (
