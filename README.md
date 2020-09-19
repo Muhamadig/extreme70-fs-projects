@@ -7,7 +7,7 @@ This repository contains my projects of the [Extreme 70 Full Stack Course with Y
 The repository will contains five diffrent projects of ReactJs and NodeJS and Full Stack
 
 <ol>
-<li>Project 1 : React Mid Course Project</li>
+<li><a href="https://github.com/Muhamadig/extreme70-fs-projects/tree/master/project1-react-mid">Project 1 : React Mid Course Project</a>-Completed</li>
 </ol>
 
 ## Technology Stack
