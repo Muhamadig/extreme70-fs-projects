@@ -9,9 +9,24 @@ const SignIn = () => {
           <p className="h3 text-center mt-2">Your Movies Club</p>
         </div>
         <div className="col-5 d-flex align-items-center justify-content-center">
-          <card className="card w-50 ">
-            <header className="card-header"></header>
-            <body className="card-body"></body>
+          <card className="card w-50 text-dark text-center">
+            <header className="card-header ">
+              <p className="h4">Login</p>
+            </header>
+            <body className="card-body ">
+              <form>
+                <div className="form-group">
+                  {/* <label htmlFor="username">Username</label> */}
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="username"
+                    placeholder="Username"
+                  />
+                  <small className="form-text text-muted">error message</small>
+                </div>
+              </form>
+            </body>
             <footer className="card-footer"></footer>
           </card>
         </div>

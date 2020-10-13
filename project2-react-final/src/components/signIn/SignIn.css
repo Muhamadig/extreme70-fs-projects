@@ -5,3 +5,6 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
+.card-background {
+  -webkit-filter: blur(20px);
+}
