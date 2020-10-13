@@ -5,7 +5,7 @@ import SignIn from "./components/signIn/SignIn";
 
 function App() {
   return (
-    <div className="container-fluid bg-dark view">
+    <div className="bg-dark view">
       <Switch>
         <Route path="/signin" component={SignIn} />
         <Route path="/" component={SignIn} />
