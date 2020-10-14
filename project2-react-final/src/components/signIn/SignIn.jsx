@@ -1,16 +1,84 @@
-import { faUser } from "@fortawesome/free-regular-svg-icons";
-import {
-  faKey,
-  faUserAlt,
-  faUserAltSlash,
-  faUserAstronaut,
-  faUserCheck,
-} from "@fortawesome/free-solid-svg-icons";
+import { faKey, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Link, Route, Switch } from "react-router-dom";
+import FormCard from "./FormCard";
 import "./SignIn.css";
 const SignIn = () => {
+  const signInFormInputes = {
+    header: { title: "Login" },
+    body: [
+      {
+        inputName: "username",
+        type: "text",
+        icon: faUserCheck,
+        placeholder: "Username",
+        error: { showError: true, message: "error message" },
+      },
+      {
+        inputName: "password",
+        type: "password",
+        icon: faKey,
+        placeholder: "Password",
+        error: { showError: true, message: "error message" },
+      },
+      {
+        inputName: "rememberme",
+        type: "checkbox",
+        label: "Remember Me",
+      },
+      {
+        inputName: "login",
+        type: "button",
+        label: "Login",
+      },
+    ],
+    footer: {
+      message: "First Login?",
+      link: {
+        to: "/firstLogin",
+        label: "Click Here",
+      },
+    },
+  };
+  const firstSignInFormInputes = {
+    header: { title: "First Login" },
+    body: [
+      {
+        inputName: "username",
+        type: "text",
+        icon: faUserCheck,
+        placeholder: "Username",
+        error: { showError: true, message: "error message" },
+      },
+      {
+        inputName: "password",
+        type: "password",
+        icon: faKey,
+        placeholder: "Password",
+        error: { showError: true, message: "error message" },
+      },
+      {
+        inputName: "re-password",
+        type: "password",
+        icon: faKey,
+        placeholder: "Confirm Password",
+        error: { showError: true, message: "error message" },
+      },
+      {
+        inputName: "submit-password",
+        type: "button",
+        label: "Submit",
+      },
+    ],
+    footer: {
+      message: "Already Have a Password?",
+      link: {
+        to: "/signin",
+        label: "Back to Login",
+      },
+    },
+  };
   return (
     <div className="container-fluid ">
       <div className="row">
@@ -19,74 +87,17 @@ const SignIn = () => {
           <p className="h3 text-center mt-2">Your Movies Club</p>
         </div>
         <div className="col-6 d-flex align-items-center justify-content-center ">
-          <card className="card w-50 text-light text-center  bg-transparent ">
-            <header className="card-header ">
-              <p className="h4">Login</p>
-            </header>
-            <body className="card-body bg-transparent  text-light">
-              <form>
-                <div className="form-group">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <label
-                        className="input-group-text bg-warning"
-                        htmlFor="username"
-                      >
-                        <FontAwesomeIcon icon={faUserCheck} />
-                      </label>
-                    </div>
-                    <input
-                      type="text"
-                      className="form-control"
-                      id="username"
-                      placeholder="Username"
-                    />
-                  </div>
-                  <small className="form-text ">error message</small>
-                </div>
-                <div className="form-group">
-                  <div className="input-group">
-                    <div className="input-group-prepend">
-                      <label
-                        className="input-group-text bg-warning"
-                        htmlFor="password"
-                      >
-                        <FontAwesomeIcon icon={faKey} />
-                      </label>
-                    </div>
-                    <input
-                      type="password"
-                      className="form-control"
-                      id="password"
-                      placeholder="Password"
-                    />
-                  </div>
-                  <small className="form-text ">error message</small>
-                </div>
-                <div className="form-group">
-                  <div className="form-inline">
-                    <input
-                      type="checkbox"
-                      className="form-check-input bg-warining "
-                      id="rememberme"
-                    />
-                    Remember Me
-                  </div>
-                </div>
-                <div className="text-right">
-                  <button className="btn btn-warning ">Login</button>
-                </div>
-              </form>
-            </body>
-            <footer className="card-footer">
-              <p>
-                First Login?{" "}
-                <Link className="text-warning" to="/firstLogin">
-                  Click Here
-                </Link>
-              </p>
-            </footer>
-          </card>
+          <Switch>
+            <Route to="/signin">
+              <FormCard />
+            </Route>
+            <Route to="/firstLogin">
+              <FormCard />
+            </Route>
+            <Route to="/">
+              <FormCard />
+            </Route>
+          </Switch>
         </div>
       </div>
     </div>
