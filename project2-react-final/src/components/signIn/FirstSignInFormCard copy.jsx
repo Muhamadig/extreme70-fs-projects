@@ -2,11 +2,12 @@ import { faKey, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { Link } from "react-router-dom";
-const FormCard = (props) => {
+const FirstSignInFormCard = (props) => {
   return (
     <card className="card w-50 text-light text-center  bg-transparent ">
       <header className="card-header ">
-        <p className="h4">Login</p>
+        <p className="h4">First Login</p>
+        <p className="h6">Set New Password</p>
       </header>
       <body className="card-body bg-transparent  text-light">
         <form>
@@ -49,25 +50,35 @@ const FormCard = (props) => {
             <small className="form-text ">error message</small>
           </div>
           <div className="form-group">
-            <div className="form-inline">
+            <div className="input-group">
+              <div className="input-group-prepend">
+                <label
+                  className="input-group-text bg-warning"
+                  htmlFor="confirm-password"
+                >
+                  <FontAwesomeIcon icon={faKey} />
+                </label>
+              </div>
               <input
-                type="checkbox"
-                className="form-check-input bg-warining "
-                id="rememberme"
+                type="password"
+                className="form-control"
+                id="confirm-password"
+                placeholder="Confirm Password"
               />
-              Remember Me
             </div>
+            <small className="form-text ">error message</small>
           </div>
+
           <div className="text-right">
-            <button className="btn btn-warning ">Login</button>
+            <button className="btn btn-warning ">Submit</button>
           </div>
         </form>
       </body>
       <footer className="card-footer">
         <p>
-          First Login?{" "}
-          <Link className="text-warning" to="/firstLogin">
-            Click Here
+          Already Have Password?{" "}
+          <Link className="text-warning" to="/signIn">
+            Back To Login
           </Link>
         </p>
       </footer>
@@ -75,4 +86,4 @@ const FormCard = (props) => {
   );
 };
 
-export default FormCard;
+export default FirstSignInFormCard;
