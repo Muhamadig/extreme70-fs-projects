@@ -1,15 +1,16 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import SignIn from "./components/signIn/SignIn";
 
 function App() {
   return (
     <div className="bg-dark view">
-      <Switch>
+      {/* <Switch>
         <Route path="/signin" component={SignIn} />
-        <Route path="/" component={SignIn} />
-      </Switch>
+        <Redirect from="/" to="/signin" />
+      </Switch> */}
+      <SignIn />
     </div>
   );
 }

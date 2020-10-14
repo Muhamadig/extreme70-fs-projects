@@ -1,7 +1,7 @@
 import { faKey, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Redirect, Route, Switch } from "react-router-dom";
 import FormCard from "./FormCard";
 import "./SignIn.css";
 const SignIn = () => {
@@ -94,9 +94,7 @@ const SignIn = () => {
             <Route to="/firstLogin">
               <FormCard />
             </Route>
-            <Route to="/">
-              <FormCard />
-            </Route>
+            <Redirect from="/" to="/signin" />
           </Switch>
         </div>
       </div>
