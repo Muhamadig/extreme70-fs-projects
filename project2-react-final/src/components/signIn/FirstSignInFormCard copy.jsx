@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 const FirstSignInFormCard = (props) => {
   const { goBack } = useHistory();
   return (
-    <card className="card w-50 text-light text-center  bg-transparent ">
+    <card className="card card-width text-light text-center  bg-transparent ">
       <header className="card-header ">
         <p className="h4">First Login</p>
         <p className="h6">Set New Password</p>

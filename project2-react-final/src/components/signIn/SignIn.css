@@ -10,12 +10,39 @@
   .signin-background {
     min-height: 28vh;
   }
+
+  .card-width {
+    width: 100%;
+  }
 }
 @media (min-width: 1024px) {
   .signin-background {
     min-height: 100vh;
   }
+  .card-width {
+    width: 75%;
+  }
 }
+
+@media (max-width: 991px) {
+  .card-width {
+    width: 100%;
+  }
+}
+@media (min-width: 992px) {
+  .card-width {
+    width: 90%;
+  }
+}
+@media (min-width: 2000px) {
+  .card-width {
+    width: 70%;
+  }
+}
+.card-width {
+  /* width: 75%; */
+}
+
 #rememberme {
   width: 20px;
   height: 20px;
