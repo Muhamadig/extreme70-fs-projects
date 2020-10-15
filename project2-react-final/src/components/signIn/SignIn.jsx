@@ -1,10 +1,16 @@
 import React from "react";
-import { Route, Switch, useHistory } from "react-router-dom";
+import {
+  Link,
+  Route,
+  Switch,
+  useHistory,
+  useRouteMatch,
+} from "react-router-dom";
 import "./SignIn.css";
 import SignInFormCard from "./SignInFormCard";
 import FirstSignInFormCard from "./FirstSignInFormCard copy";
 const SignIn = () => {
-  let history = useHistory();
+  let { path, url } = useRouteMatch();
 
   return (
     <div className="container-fluid ">
@@ -15,10 +21,10 @@ const SignIn = () => {
         </div>
         <div className="col-6 d-flex align-items-center justify-content-center ">
           <Switch>
-            <Route exact to="/signin">
+            <Route exact path={path}>
               <SignInFormCard />
             </Route>
-            <Route to="/signin/firstlogin">
+            <Route path={`${path}/set-password`}>
               <FirstSignInFormCard />
             </Route>
           </Switch>

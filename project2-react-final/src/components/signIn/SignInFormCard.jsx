@@ -1,8 +1,9 @@
 import { faKey, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 const SignInFormCard = (props) => {
+  const { url } = useRouteMatch();
   return (
     <card className="card w-50 text-light text-center  bg-transparent ">
       <header className="card-header ">
@@ -66,7 +67,7 @@ const SignInFormCard = (props) => {
       <footer className="card-footer">
         <p>
           First Login?{" "}
-          <Link className="text-warning" to="/signin/firstlogin">
+          <Link className="text-warning" to={`${url}/set-password`}>
             Click Here
           </Link>
         </p>

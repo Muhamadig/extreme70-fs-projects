@@ -1,8 +1,9 @@
 import { faKey, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 const FirstSignInFormCard = (props) => {
+  const { goBack } = useHistory();
   return (
     <card className="card w-50 text-light text-center  bg-transparent ">
       <header className="card-header ">
@@ -77,7 +78,7 @@ const FirstSignInFormCard = (props) => {
       <footer className="card-footer">
         <p>
           Already Have Password?{" "}
-          <Link className="text-warning" to="/signIn">
+          <Link className="text-warning" onClick={goBack}>
             Back To Login
           </Link>
         </p>
