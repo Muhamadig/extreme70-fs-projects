@@ -6,11 +6,11 @@ import SignIn from "./components/signIn/SignIn";
 function App() {
   return (
     <div className="bg-dark view">
-      {/* <Switch>
+      <Switch>
         <Route path="/signin" component={SignIn} />
         <Redirect from="/" to="/signin" />
-      </Switch> */}
-      <SignIn />
+      </Switch>
+      {/* <SignIn /> */}
     </div>
   );
 }

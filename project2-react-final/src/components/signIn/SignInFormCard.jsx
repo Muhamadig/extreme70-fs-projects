@@ -66,7 +66,7 @@ const SignInFormCard = (props) => {
       <footer className="card-footer">
         <p>
           First Login?{" "}
-          <Link className="text-warning" to="/firstLogin">
+          <Link className="text-warning" to="/signin/firstlogin">
             Click Here
           </Link>
         </p>

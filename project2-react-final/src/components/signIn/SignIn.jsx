@@ -1,84 +1,11 @@
-import { faKey, faUserCheck } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { Link, Redirect, Route, Switch } from "react-router-dom";
-import FormCard from "./FormCard";
+import { Route, Switch, useHistory } from "react-router-dom";
 import "./SignIn.css";
+import SignInFormCard from "./SignInFormCard";
+import FirstSignInFormCard from "./FirstSignInFormCard copy";
 const SignIn = () => {
-  const signInFormInputes = {
-    header: { title: "Login" },
-    body: [
-      {
-        inputName: "username",
-        type: "text",
-        icon: faUserCheck,
-        placeholder: "Username",
-        error: { showError: true, message: "error message" },
-      },
-      {
-        inputName: "password",
-        type: "password",
-        icon: faKey,
-        placeholder: "Password",
-        error: { showError: true, message: "error message" },
-      },
-      {
-        inputName: "rememberme",
-        type: "checkbox",
-        label: "Remember Me",
-      },
-      {
-        inputName: "login",
-        type: "button",
-        label: "Login",
-      },
-    ],
-    footer: {
-      message: "First Login?",
-      link: {
-        to: "/firstLogin",
-        label: "Click Here",
-      },
-    },
-  };
-  const firstSignInFormInputes = {
-    header: { title: "First Login" },
-    body: [
-      {
-        inputName: "username",
-        type: "text",
-        icon: faUserCheck,
-        placeholder: "Username",
-        error: { showError: true, message: "error message" },
-      },
-      {
-        inputName: "password",
-        type: "password",
-        icon: faKey,
-        placeholder: "Password",
-        error: { showError: true, message: "error message" },
-      },
-      {
-        inputName: "re-password",
-        type: "password",
-        icon: faKey,
-        placeholder: "Confirm Password",
-        error: { showError: true, message: "error message" },
-      },
-      {
-        inputName: "submit-password",
-        type: "button",
-        label: "Submit",
-      },
-    ],
-    footer: {
-      message: "Already Have a Password?",
-      link: {
-        to: "/signin",
-        label: "Back to Login",
-      },
-    },
-  };
+  let history = useHistory();
+
   return (
     <div className="container-fluid ">
       <div className="row">
@@ -88,13 +15,12 @@ const SignIn = () => {
         </div>
         <div className="col-6 d-flex align-items-center justify-content-center ">
           <Switch>
-            <Route to="/signin">
-              <FormCard />
+            <Route exact to="/signin">
+              <SignInFormCard />
             </Route>
-            <Route to="/firstLogin">
-              <FormCard />
+            <Route to="/signin/firstlogin">
+              <FirstSignInFormCard />
             </Route>
-            <Redirect from="/" to="/signin" />
           </Switch>
         </div>
       </div>
