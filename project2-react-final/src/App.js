@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
+import Home from "./components/Home";
 import SignIn from "./components/signIn/SignIn";
 
 function App() {
@@ -8,9 +9,8 @@ function App() {
     <div className="bg-dark view">
       <Switch>
         <Route path="/signin" component={SignIn} />
-        <Redirect from="/" to="/signin" />
+        <Route path="/" component={Home} />
       </Switch>
-      {/* <SignIn /> */}
     </div>
   );
 }
