@@ -20,7 +20,6 @@ const SignIn = () => {
           <p className="h1 text-center mt-2">MOVIC</p>
           <p className="h3 text-center mt-2">Your Movies Club</p>
         </div>
-        <p>{auth.signIn("admin", "admin")}</p>
         <div className="col-12 col-sm-12  col-md-12 col-lg-6 col-xl-4 d-flex align-items-center justify-content-center ">
           <Switch>
             <Route exact path={path}>

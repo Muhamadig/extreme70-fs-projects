@@ -1,12 +1,10 @@
 // Firebase App (the core Firebase SDK) is always required and must be listed first
-import * as firebase from "firebase/app";
-
-// If you enabled Analytics in your project, add the Firebase SDK for Analytics
-import "firebase/analytics";
-
-// Add the Firebase products that you want to use
-import "firebase/auth";
-import "firebase/firestore";
+var firebase = require("firebase");
+var app = require("firebase/app");
+var analytics = require("firebase/analytics");
+var auth = require("firebase/auth");
+var firestore = require("firebase/firestore");
+const firebaseAdmin = require("firebase-admin");
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -19,7 +17,16 @@ const firebaseConfig = {
   appId: "1:1096121906798:web:e111db7d44c6e69c43187f",
   measurementId: "G-DF9S7WMEVM",
 };
+//   serviceAccountId:
+//     "firebase-adminsdk-n5tdf@movic-project2.iam.gserviceaccount.com",
 // Initialize Firebase
-export let initializeApp = () => {
-  firebase.initializeApp(firebaseConfig);
+export let initializeApp = async () => {
+  let init = firebase.initializeApp(firebaseConfig);
+  let result = await firebase
+    .auth()
+    .signInWithCustomToken(
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIn0.9OPbM3qMRFJs8NZ3QE1ycbvsnAvWB5QHaCZaEqGFGgc"
+    );
+  console.log(init);
+  console.log(result);
 };

@@ -1,16 +1,21 @@
 import { faKey, faUserCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { signIn } from "../../firebase/auth";
 import React from "react";
 import { Link, useRouteMatch } from "react-router-dom";
 const SignInFormCard = (props) => {
   const { url } = useRouteMatch();
+  const login = (e) => {
+    e.preventDefault();
+    signIn("admin", "admin");
+  };
   return (
     <card className="card card-width ml-0  text-light text-center  bg-transparent ">
       <header className="card-header p-4">
         <p className="h4">Login</p>
       </header>
       <body className="card-body bg-transparent  text-light p-4">
-        <form>
+        <form onSubmit={login}>
           <div className="form-group">
             <div className="input-group">
               <div className="input-group-prepend">
