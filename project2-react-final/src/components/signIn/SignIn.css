@@ -1,12 +1,21 @@
 .signin-background {
   background-image: url("../../images/welcome.jpg");
-  min-height: 100vh;
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   font-family: "Numans", sans-serif;
 }
 
+@media (max-width: 1023px) {
+  .signin-background {
+    min-height: 28vh;
+  }
+}
+@media (min-width: 1024px) {
+  .signin-background {
+    min-height: 100vh;
+  }
+}
 #rememberme {
   width: 20px;
   height: 20px;

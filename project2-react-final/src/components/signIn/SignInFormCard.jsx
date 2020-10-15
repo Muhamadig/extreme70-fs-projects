@@ -5,11 +5,11 @@ import { Link, useRouteMatch } from "react-router-dom";
 const SignInFormCard = (props) => {
   const { url } = useRouteMatch();
   return (
-    <card className="card w-50 text-light text-center  bg-transparent ">
-      <header className="card-header ">
+    <card className="card  ml-0  text-light text-center  bg-transparent ">
+      <header className="card-header p-4">
         <p className="h4">Login</p>
       </header>
-      <body className="card-body bg-transparent  text-light">
+      <body className="card-body bg-transparent  text-light p-4">
         <form>
           <div className="form-group">
             <div className="input-group">
@@ -64,7 +64,7 @@ const SignInFormCard = (props) => {
           </div>
         </form>
       </body>
-      <footer className="card-footer">
+      <footer className="card-footer p-4">
         <p>
           First Login?{" "}
           <Link className="text-warning" to={`${url}/set-password`}>

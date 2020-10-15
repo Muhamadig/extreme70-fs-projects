@@ -15,11 +15,11 @@ const SignIn = () => {
   return (
     <div className="container-fluid ">
       <div className="row">
-        <div className="col-6 signin-background">
+        <div className="col col-sm-0  col-md-0  col-lg-6 col-xl-8 signin-background">
           <p className="h1 text-center mt-2">MOVIC</p>
           <p className="h3 text-center mt-2">Your Movies Club</p>
         </div>
-        <div className="col-6 d-flex align-items-center justify-content-center ">
+        <div className="col-12 col-sm-12  col-md-12 col-lg-6 col-xl-4 d-flex align-items-center justify-content-center ">
           <Switch>
             <Route exact path={path}>
               <SignInFormCard />
