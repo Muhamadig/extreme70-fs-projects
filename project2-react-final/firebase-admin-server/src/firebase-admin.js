@@ -22,6 +22,17 @@ app.post("/auth/token", async (req, res) => {
   res.contentType("application/json");
   res.send({ jwt: result });
 });
+app.get("/auth/users/:username", async (req, res) => {
+  try {
+    let result = await auth.getUserByUsername(req.params.username);
+    res.contentType("application/json");
+    res.send(result);
+  } catch (err) {
+    res.contentType("application/json");
+    res.status(err.statusCode);
+    res.send({ error: err.message });
+  }
+});
 
 app.listen(port, () => {
   console.log(`Server Started at http://localhost:${port}`);
