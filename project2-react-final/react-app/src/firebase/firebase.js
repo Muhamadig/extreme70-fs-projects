@@ -1,9 +1,7 @@
-const app = require("firebase/app");
+const firebase = require("firebase");
+const firebaseAuth = require("firebase/auth");
 const firebaseConfig = require("../private/firebaseConfig");
 
-const initializeApp = () => {
-  return app.initializeApp(firebaseConfig);
-};
+const firebaseApp = firebase.initializeApp(firebaseConfig.firebaseConfig);
 
-const firebase = initializeApp();
-export default firebase;
+export default firebaseApp;
