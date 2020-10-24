@@ -1,5 +1,4 @@
 import firebaseApp from "./firebase";
-const firebaseAuth = require("firebase/auth");
 
 // const firebase = require("./firebase");
 const axios = require("axios");
