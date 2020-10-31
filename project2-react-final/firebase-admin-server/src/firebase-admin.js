@@ -22,6 +22,8 @@ app.post("/auth/token", async (req, res) => {
   res.contentType("application/json");
   res.send({ jwt: result });
 });
+
+app.post("/auth/users/validate", async (req, res) => {});
 app.get("/auth/users/:username", async (req, res) => {
   try {
     let result = await auth.getUserByUsername(req.params.username);
