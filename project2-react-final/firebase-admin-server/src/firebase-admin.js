@@ -1,6 +1,6 @@
 const express = require("express");
 const admin = require("firebase-admin");
-const serviceAccount = require("../private/movic-project2-firebase-adminsdk-n5tdf-dc104cb9e4.json");
+const serviceAccount = require("../private/movic-project2-firebase-adminsdk-n5tdf-369b601fd3.json");
 const auth = require("./auth");
 const cors = require("cors");
 
