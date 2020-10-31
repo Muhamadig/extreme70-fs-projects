@@ -23,7 +23,23 @@ app.post("/auth/token", async (req, res) => {
   res.send({ jwt: result });
 });
 
-app.post("/auth/users/validate", async (req, res) => {});
+/*
+payload:{
+  username:String
+  password:String
+}
+*/
+app.post("/auth/users/validate", async (req, res) => {
+  let body = req.body;
+  try {
+    let result = await auth.validateCredentials(body);
+    res.status(result.statusCode);
+    res.send(result);
+  } catch (err) {
+    err.statusCode ? res.status(err.statusCode) : res.status(500);
+    res.send(err);
+  }
+});
 app.get("/auth/users/:username", async (req, res) => {
   try {
     let result = await auth.getUserByUsername(req.params.username);
