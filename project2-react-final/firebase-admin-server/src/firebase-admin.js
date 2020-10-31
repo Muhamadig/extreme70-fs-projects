@@ -40,15 +40,14 @@ app.post("/auth/users/validate", async (req, res) => {
     res.send(err);
   }
 });
-app.get("/auth/users/:username", async (req, res) => {
+app.get("/auth/users/:userId", async (req, res) => {
   try {
-    let result = await auth.getUserByUsername(req.params.username);
-    res.contentType("application/json");
+    let result = await auth.getUserById(req.params.userId);
+    res.status(200);
     res.send(result);
   } catch (err) {
-    res.contentType("application/json");
-    res.status(err.statusCode);
-    res.send({ error: err.message });
+    err.error ? res.status(err.error) : res.status(500);
+    res.send(err);
   }
 });
 

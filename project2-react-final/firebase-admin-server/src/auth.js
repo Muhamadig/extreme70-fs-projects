@@ -32,14 +32,15 @@ exports.validateCredentials = (credentials) => {
         }
 
         // One User Was Found
-        let userDocument = documents.docs[0].data();
+        let userDocument = documents.docs[0];
 
-        if (userDocument.password !== credentials.password) {
+        if (userDocument.data().password !== credentials.password) {
           result.statusCode = 401;
           result.message = "Incorrect Password";
           return reject(result);
         }
         result.statusCode = 200;
+        result.id = userDocument.id;
         return resolve(result);
       })
       .catch((err) => {
@@ -47,21 +48,22 @@ exports.validateCredentials = (credentials) => {
       });
   });
 };
-exports.getUserByUsername = (username) => {
+exports.getUserById = (id) => {
   return new Promise((resolve, reject) => {
     admin
       .firestore()
       .collection("users")
-      .where("username", "==", username)
+      .doc(id)
       .get()
-      .then((data) => {
-        if (data.docs.length == 0)
-          reject({ statusCode: 404, message: `User ${username} Not Found` });
-        console.log(data.docs[0].data());
-        resolve(data.docs[0].data());
+      .then((user) => {
+        if (!user.exists)
+          return reject({ error: 404, message: "User Not Found" });
+        let userDocument = user.data();
+        delete userDocument.password;
+        return resolve(userDocument);
       })
       .catch((err) => {
-        reject({ statusCode: 500, message: `${err.message}` });
+        reject({ error: 500, message: `${err.message}` });
       });
   });
 };
